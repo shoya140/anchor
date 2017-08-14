@@ -21,9 +21,11 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   }
 });
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('root')
-);
+ReactDOM.unstable_deferredUpdates(() => {
+  ReactDOM.render(
+    <Provider store={store}>
+      <App />
+    </Provider>,
+    document.getElementById('root')
+  );
+});
